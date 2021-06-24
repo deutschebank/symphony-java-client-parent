@@ -23,7 +23,7 @@ public class HelpMessageConsumer implements SimpleMessageConsumer {
 	@Override
 	public List<Response> apply(SimpleMessageAction sma) {
 		return sma.getWords().getNth(Word.class, 0)
-			.filter(w -> w.getIdentifier().equals("help"))
+			.filter(w -> w.getIdentifier().equalsIgnoreCase("help"))
 			.map(w -> {
 				
 				List<Workflow.CommandDescription> commands = sma.getWorkflow()

@@ -9,7 +9,7 @@ public interface Word extends Content {
 
 			@Override
 			public String getIdentifier() {
-				return s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+				return s.replaceAll("[^a-zA-Z0-9]", "");
 			}
 
 			@Override

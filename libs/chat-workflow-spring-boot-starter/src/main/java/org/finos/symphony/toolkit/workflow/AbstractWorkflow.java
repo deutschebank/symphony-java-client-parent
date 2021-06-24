@@ -43,7 +43,7 @@ public abstract class AbstractWorkflow implements Workflow {
 	@Override
 	public boolean hasMatchingCommand(String name, Addressable r) {
 		return getCommands(r).stream()
-			.filter(c -> c.getName().equals(name))
+			.filter(c -> c.getName().equalsIgnoreCase(name))
 			.count() > 0;
 	}
 	

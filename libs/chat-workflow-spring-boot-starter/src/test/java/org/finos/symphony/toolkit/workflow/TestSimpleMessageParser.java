@@ -101,7 +101,17 @@ public class TestSimpleMessageParser extends AbstractMockSymphonyTest {
 					Arrays.stream(new String[] {"help"})
 						.map(s -> Word.of(s))
 						.collect(Collectors.toList())
-						), smp.parseMessage("<messageML>Help</messageML>", null));
+						), smp.parseMessage("<messageML>help</messageML>", null));
+	}
+
+	@Test
+	public void testHelpMessageWithCameCase() throws Exception {
+		Assertions.assertEquals(
+				Message.of(
+						Arrays.stream(new String[] {"Help"})
+								.map(s -> Word.of(s))
+								.collect(Collectors.toList())
+				), smp.parseMessage("<messageML>Help</messageML>", null));
 	}
 	
 	@Test

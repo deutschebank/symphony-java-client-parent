@@ -137,4 +137,23 @@ public class TestCommandPerformer extends AbstractMockSymphonyTest {
 		Assertions.assertEquals("Null pointer exception thrown", ((ErrorResponse) r.get(0)).getMessage());
 	}
 
+
+	@Test
+	public void testCommandNameWithCamelcase1() {
+		ElementsAction sma = new ElementsAction(wf, TestWorkflowConfig.room, TestWorkflowConfig.u, null,  "testObjects", new EntityJson());
+		List<Response> r = cp.applyCommand("TestObjects", sma);
+		Assertions.assertEquals(FormResponse.class, r.get(0).getClass());
+		Assertions.assertEquals(TestWorkflowConfig.INITIAL_TEST_OBJECTS, ((FormResponse) r.get(0)).getFormObject());
+		Assertions.assertEquals(false, ((FormResponse) r.get(0)).isEditable());
+	}
+
+	@Test
+	public void testCommandNameWithCamelcase2() {
+		ElementsAction sma = new ElementsAction(wf, TestWorkflowConfig.room, TestWorkflowConfig.u, null,  "testObjects", new EntityJson());
+		List<Response> r = cp.applyCommand("testobjects", sma);
+		Assertions.assertEquals(FormResponse.class, r.get(0).getClass());
+		Assertions.assertEquals(TestWorkflowConfig.INITIAL_TEST_OBJECTS, ((FormResponse) r.get(0)).getFormObject());
+		Assertions.assertEquals(false, ((FormResponse) r.get(0)).isEditable());
+	}
+
 }
